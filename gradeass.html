@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFF9C4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .converter {
+            background-color: #FFF59D;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 2px solid #FBC02D;
+        }
+        h1 {
+            color: #F57F17;
+            margin-top: 0;
+        }
+        input {
+            padding: 10px;
+            width: 100px;
+            border: 2px solid #FBC02D;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #FBC02D;
+            color: #5D4037;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #F9A825;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #5D4037;
+        }
+        .grade {
+            font-weight: bold;
+            color: #D84315;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h1>Grade Converter</h1>
+        <div>
+            <input type="number" id="score" placeholder="0-100" min="0" max="100">
+            <button onclick="convert()">Convert</button>
+        </div>
+        <div class="result">
+            Your grade is <span class="grade" id="gradeOutput">__</span>
+        </div>
+    </div>
+
+    <script>
+        function convert() {
+            const score = document.getElementById("score").value;
+            const gradeOutput = document.getElementById("gradeOutput");
+            let grade = "F";
+            
+            if (score >= 90) grade = "A";
+            else if (score >= 80) grade = "B";
+            else if (score >= 70) grade = "C";
+            else if (score >= 60) grade = "D";
+            
+            gradeOutput.textContent = grade;
+        }
+    </script>
+</body>
+</html>

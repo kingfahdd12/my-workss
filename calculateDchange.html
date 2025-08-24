@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thai Baht Change Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5fff5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .calculator-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(46, 125, 50, 0.15);
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #e0f2e0;
+        }
+        
+        h2 {
+            color: #2e7d32;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 2px solid #c8e6c9;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #4caf50;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        button:hover {
+            background-color: #3d8b40;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(46, 125, 50, 0.2);
+        }
+        
+        #result {
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            padding: 20px;
+            color: #1b5e20;
+            font-size: 16px;
+            line-height: 1.6;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .note-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed #c8e6c9;
+        }
+        
+        .note-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h2>Thai Baht Change Calculator</h2>
+        <input type="number" id="amount" placeholder="Enter amount in THB">
+        <button onclick="calculate()">Calculate Change</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        // EXACT SAME WORKING JAVASCRIPT AS BEFORE
+        function calculate() {
+            let amount = document.getElementById("amount").value;
+            let notes = [500, 100, 50, 20, 1];
+            let result = "";
+            
+            for (let i = 0; i < notes.length; i++) {
+                let count = Math.floor(amount / notes[i]);
+                if (count > 0) {
+                    result += '<div class="note-item">' + count + " × B" + notes[i] + '</div>';
+                    amount = amount % notes[i];
+                }
+            }
+            
+            document.getElementById("result").innerHTML = result || "Enter an amount to calculate";
+        }
+    </script>
+</body>
+</html>
